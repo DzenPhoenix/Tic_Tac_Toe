@@ -6,6 +6,7 @@ class TicTacToeApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(home: Scaffold(body: Cell(size: 100)));
+    return const MaterialApp(
+        home: Scaffold(body: Cell(size: 50, posX: 0, posY: 0, isZero: false)));
   }
 }
