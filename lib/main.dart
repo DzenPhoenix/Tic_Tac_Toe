@@ -3,5 +3,5 @@ import 'widgets/app.dart';
 
 void main() {
   runApp(const TicTacToeApp());
-  //Изменения проведены
+  //Изменения проведены второй раз
 }
