@@ -1,12 +1,24 @@
 import 'package:flutter/material.dart';
-import './Cell/cell.dart';
+import 'package:tic_tac_toe/models/cell_model.dart';
+import './Field/field.dart';
 
-class TicTacToeApp extends StatelessWidget {
-  const TicTacToeApp({Key? key}) : super(key: key);
+class TicTacToeApp extends StatefulWidget {
+  final int fieldSize;
+  const TicTacToeApp({Key? key, required this.fieldSize}) : super(key: key);
 
   @override
+  _TicTacToeState createState() => _TicTacToeState();
+}
+
+class _TicTacToeState extends State<TicTacToeApp> {
+  // add handle click
+  @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-        home: Scaffold(body: Cell(size: 50, posX: 0, posY: 0, isZero: false)));
+    List<List<CellModel>> fieldState = List<List<CellModel>>.generate(
+        widget.fieldSize,
+        (xIdx) => List<CellModel>.generate(widget.fieldSize,
+            (yIdx) => CellModel(posX: xIdx, posY: yIdx, isZero: false)));
+    return MaterialApp(
+        home: Scaffold(body: Field(fieldSize: widget.fieldSize)));
   }
 }
