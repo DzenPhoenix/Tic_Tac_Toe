@@ -1,20 +1,15 @@
 import 'package:flutter/material.dart';
+import '../../models/cell_model.dart';
 
 // TO DO handleClick function
 class Cell extends StatelessWidget {
+  final CellModel cellModel;
   final double size;
-  final int posX, posY;
-  final bool isZero;
-  const Cell(
-      {Key? key,
-      required this.size,
-      required this.posX,
-      required this.posY,
-      required this.isZero})
+  const Cell({Key? key, required this.size, required this.cellModel})
       : super(key: key);
   @override
   Widget build(BuildContext context) {
-    String assetName = isZero
+    String assetName = cellModel.getIsZero()
         ? '../../../assets/images/cell/circle.png'
         : '../../../assets/images/cell/cross.png';
     return Center(
