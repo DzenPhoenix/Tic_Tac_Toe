@@ -5,23 +5,33 @@ import '../../models/cell_model.dart';
 class Cell extends StatelessWidget {
   final CellModel cellModel;
   final double size;
-  const Cell({Key? key, required this.size, required this.cellModel})
+  final void Function({required CellModel targetCell}) handleClick;
+
+  const Cell(
+      {Key? key,
+      required this.size,
+      required this.cellModel,
+      required this.handleClick})
       : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     String assetName = cellModel.getIsZero()
         ? '../../../assets/images/cell/circle.png'
         : '../../../assets/images/cell/cross.png';
     return Center(
-      child: Container(
-          width: size,
-          height: size,
-          decoration: BoxDecoration(
-              border: Border.all(),
-              image: DecorationImage(
-                image: AssetImage(assetName),
-                fit: BoxFit.cover,
-              ))),
+      child: GestureDetector(
+        onTap: () => handleClick(targetCell: cellModel),
+        child: Container(
+            width: size,
+            height: size,
+            decoration: BoxDecoration(
+                border: Border.all(),
+                image: DecorationImage(
+                  image: AssetImage(assetName),
+                  fit: BoxFit.cover,
+                ))),
+      ),
     );
   }
 }

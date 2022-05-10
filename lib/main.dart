@@ -2,5 +2,5 @@ import 'package:flutter/material.dart';
 import 'widgets/app.dart';
 
 void main() {
-  runApp(const TicTacToeApp(fieldSize: 5));
+  runApp(TicTacToeApp(fieldSize: 3));
 }
